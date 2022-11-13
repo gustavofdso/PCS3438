@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+    frame=single,
+    language=Python,
+    backgroundcolor=\color{white},
+    basicstyle=\footnotesize,
+    breaklines=true,
+    commentstyle=\color{mygreen},
+    keywordstyle=\color{blue},
+    stringstyle=\color{mymauve},
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=1,
+    breakatwhitespace=false,
+    literate=
+        {á}{{\'a}}1
+        {à}{{\`a}}1
+        {ã}{{\~a}}1
+        {é}{{\'e}}1
+        {ê}{{\^e}}1
+        {í}{{\'i}}1
+        {ó}{{\'o}}1
+        {õ}{{\~o}}1
+        {ú}{{\'u}}1
+        {ü}{{\"u}}1
+        {ç}{{\c{c}}}1
+}
+
+\title{Lista de exercícios - PCS3438}
+\author{Gustavo Freitas de Sá Oliveira}
+\date{05/12/2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+Os programas desenvolvidos para a resolução dos problemas descritos foram desenvolvidos em Python. Foram utilizadas as bibliotecas: pandas (leitura e tratamento de dados), numpy (operações matemáticas) e sklearn (modelos de inteligência artificial e métodos de validação).
+
+\section{Questão 1}
+
+Considerando os dados presentes no arquivo class01.csv, treine o algoritmo Naive Bayes Gaussiano utilizando a metodologia de validação cruzada holdout (utilize para treino as 350 primeiras linhas e para validação as demais). Qual o valor da acurácia a base de treino? Qual o valor da acurácia na base de validação?
+
+\lstinputlisting{../src/q1.py}
+
+Saída observada:
+
+\begin{lstlisting}
+    Acurácia na base de treino: 0.76
+    Acurácia na base de validação: 0.6276923076923077
+\end{lstlisting}
+
+Nesse exemplo, percebe-se que a acurácia na base se treino foi maior do na base de validação. Esse fenômeno pode estar relacionado com o \emph{overfitting}, refletindo uma "memorização" dos dados pelo modelo.
+
+\section{Questão 2}
+
+Considerando os dados presentes no arquivo class02.csv, treine o algoritmo 10-Nearest Neighbors (KNN com \emph{k} = 10 e distância Euclidiana), utilizando a metodologia de validação cruzada k-fold com 5 folds. Considere que a primeira pasta de validação seja formada pelas primeiras 20\% linhas do arquivo, que a segunda pasta de validação seja formada pelas 20\% linhas seguintes, e assim por diante, até atingir a última pasta, formada pelas 20\% linhas finais da base. Qual a acurácia média para a base de validação?
+
+\lstinputlisting{../src/q2.py}
+
+Saída observada:
+
+\begin{lstlisting}
+    Acurácia na base de treino: 0.8661666666666668
+    Acurácia na base de validação: 0.8386666666666667
+\end{lstlisting}
+
+Assim como no exemplo anterior, percebe-se uma maior acurácia na base de treino. Isso pode estar também relacionado com o fenômeno anteriormente descrito.
+
+\section{Questão 3}
+
+Considerando os dados presentes no arquivo reg01.csv, obtenha um modelo de regressão linear com regularização L1 (LASSO com $\alpha$\ = 1) utilizando a metodologia Leave-One-out. Qual o valor médio do Root Mean Squared Error (RMSE) para a base de treino e para a base de validação?
+
+\lstinputlisting{../src/q3.py}
+
+Saída observada:
+
+\begin{lstlisting}
+    RMSE na base de treino: 19.220259837710355
+    RMSE na base de validação: 15.465218791702428
+\end{lstlisting}
+
+O \emph{RMSE} foi maior na base de validação que na base de treino que na base de validação. A escolha do método de validação (Leave-One-Out) pode ter influenciado nesse fenômeno, uma vez que, nesse método, as validações acontecem para cada linha da base de dados.
+
+\section{Questão 4}
+
+Considerando os dados do arquivo reg02.csv, treine árvores de regressão, sem realizar podas, utilizando a metodologia de validação cruzada k-fold com \emph{k} = 5. Qual o valor do Mean Absolute Error (MAE) para a base de treino? Qual o valor médio do MAE para a base de validação?
+
+\lstinputlisting{../src/q4.py}
+    
+Saída observada:
+
+\begin{lstlisting}
+    MAE na base de treino: 0.0
+    MAE na base de validação: 43.22051929803169
+\end{lstlisting}
+
+Nesse exemplo, o \emph{MAE} foi nulo na base de treino. Esse resultado é esperado em virtude do tipo de modelo escolhido (árvore de regressão). O \emph{MAE} na base de validação, entretanto, foi diferente de zero.
+
+\end{document}
