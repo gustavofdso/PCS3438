@@ -1,0 +1,18 @@
+\section{Questão 2}
+
+Considerando os dados presentes no arquivo class02.csv, treine o algoritmo 10-Nearest Neighbors (KNN com \emph{k} = 10 e distância Euclidiana), utilizando a metodologia de validação cruzada k-fold com 5 folds. Considere que a primeira pasta de validação seja formada pelas primeiras 20\% linhas do arquivo, que a segunda pasta de validação seja formada pelas 20\% linhas seguintes, e assim por diante, até atingir a última pasta, formada pelas 20\% linhas finais da base. Qual a acurácia média para a base de validação?
+
+\lstinputlisting[firstline = 9, lastline = 28]{../src/q2.py}
+
+O código apresentado acima lê a base de dados e inicializa um objeto \emph{KNeighborsClassifier}, que recebe os dados como parâmetros nas funções \emph{fit} e \emph{score}. Essas funções são responsáveis por treinar e avaliar o algoritmo, respectivamente.
+
+O método de validação k-fold é implementado com o objeto \emph{Kfold}, com parâmetro 5. Esse método divide a base em partes iguais, utilizando uma de cada vez para validação, e as demais para treino.
+
+Saída observada:
+
+\begin{lstlisting}
+    Acurácia na base de treino: 0.8661666666666668
+    Acurácia na base de validação: 0.8386666666666667
+\end{lstlisting}
+
+Assim como no exemplo anterior, percebe-se uma maior acurácia na base de treino. Isso pode estar também relacionado com o fenômeno anteriormente descrito.

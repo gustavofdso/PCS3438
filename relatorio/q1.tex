@@ -1,0 +1,18 @@
+\section{Questão 1}
+
+Considerando os dados presentes no arquivo class01.csv, treine o algoritmo Naive Bayes Gaussiano utilizando a metodologia de validação cruzada holdout (utilize para treino as 350 primeiras linhas e para validação as demais). Qual o valor da acurácia a base de treino? Qual o valor da acurácia na base de validação?
+
+\lstinputlisting[firstline = 9, lastline = 20]{../src/q1.py}
+
+O código apresentado acima lê a base de dados e inicializa um objeto \emph{GaussianNB}, que recebe os dados como parâmetros nas funções \emph{fit} e \emph{score}. Essas funções são responsáveis por treinar e avaliar o algoritmo, respectivamente.
+
+O método de validação hold-out é implementado com a função \emph{train\_test\_split}, que separa a base em duas porções para treino e validação.
+
+Saída observada:
+
+\begin{lstlisting}
+    Acurácia na base de treino: 0.76
+    Acurácia na base de validação: 0.6276923076923077
+\end{lstlisting}
+
+Nesse exemplo, percebe-se que a acurácia na base de treino foi maior do na base de validação. Esse fenômeno pode estar relacionado com o \emph{overfitting}, refletindo uma "memorização" dos dados pelo modelo.

@@ -1,0 +1,20 @@
+\section{Questão 3}
+
+Considerando os dados presentes no arquivo reg01.csv, obtenha um modelo de regressão linear com regularização L1 (LASSO com $\alpha$\ = 1) utilizando a metodologia Leave-One-out. Qual o valor médio do Root Mean Squared Error (RMSE) para a base de treino e para a base de validação?
+
+\lstinputlisting[firstline = 9, lastline = 29]{../src/q3.py}
+
+O código apresentado acima lê a base de dados e inicializa um objeto \emph{Lasso}, que recebe os dados como parâmetros nas funções \emph{fit} e \emph{predict}. Essas funções são responsáveis por treinar e avaliar o algoritmo, respectivamente.
+
+O método de validação Leave-One-Out é implementado com o objeto \emph{LeaveOneOut}. Esse método é semelhante ao k-fold anteriormente exemplificado, mas aqui o número de folds é igual ao número de exemplos na base de dados.
+
+A obtenção do RMSE é feita retirando a raiz quadrada do erro médio quadrado das predições do modelo.
+
+Saída observada:
+
+\begin{lstlisting}
+    RMSE na base de treino: 19.220259837710355
+    RMSE na base de validação: 15.465218791702428
+\end{lstlisting}
+
+O \emph{RMSE} foi maior na base de validação que na base de treino que na base de validação. A escolha do método de validação (Leave-One-Out) pode ter influenciado nesse fenômeno, uma vez que, nesse método, as validações acontecem para cada linha da base de dados.

@@ -1,0 +1,20 @@
+\section{Questão 4}
+
+Considerando os dados do arquivo reg02.csv, treine árvores de regressão, sem realizar podas, utilizando a metodologia de validação cruzada k-fold com \emph{k} = 5. Qual o valor do Mean Absolute Error (MAE) para a base de treino? Qual o valor médio do MAE para a base de validação?
+
+\lstinputlisting[firstline = 9, lastline = 29]{../src/q4.py}
+
+O código apresentado acima lê a base de dados e inicializa um objeto \emph{DecisionTreeRegressor}, que recebe os dados como parâmetros nas funções \emph{fit} e \emph{predict}. Essas funções são responsáveis por treinar e avaliar o algoritmo, respectivamente.
+
+O método de validação k-fold é o mesmo mostrado anteriormente.
+
+A obtenção do MAE é feita retirando o erro absoluto médio das predições do modelo.
+
+Saída observada:
+
+\begin{lstlisting}
+    MAE na base de treino: 0.0
+    MAE na base de validação: 43.22051929803169
+\end{lstlisting}
+
+Nesse exemplo, o \emph{MAE} foi nulo na base de treino. Esse resultado é esperado em virtude do tipo de modelo escolhido (árvore de regressão). O \emph{MAE} na base de validação, entretanto, foi diferente de zero.
